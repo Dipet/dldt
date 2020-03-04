@@ -131,7 +131,7 @@ ie::CNNNetwork FrontEnd::detectNetworkBatch(
 
     env.log->debug("Reshape the network");
 
-    reshapedNetwork.reshape(inputShapes);
+    reshapedNetwork.setBatchSize(1);
 
     //
     // Checks outputs that doesn't change their shape.

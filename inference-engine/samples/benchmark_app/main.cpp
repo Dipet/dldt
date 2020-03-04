@@ -280,7 +280,7 @@ int main(int argc, char *argv[]) {
                 }
                 if (reshape) {
                     slog::info << "Resizing network to batch = " << FLAGS_b << slog::endl;
-                    cnnNetwork.reshape(shapes);
+                    cnnNetwork.setBatchSize(FLAGS_b);
                 }
             }
 
