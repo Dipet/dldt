@@ -138,6 +138,12 @@ DECLARE_EXEC_NETWORK_METRIC_KEY(NETWORK_NAME, std::string);
 DECLARE_METRIC_KEY(DEVICE_THERMAL, float);
 
 /**
+ * @brief  Metric to get a device throttle status. String value is "DEVICE_THROTTLE_STATUS"
+ * 0=NOT_THROTTLED, 1=TEMP_LIM_LOWER reached, 2=TEMP_LIM_HIGHER reached
+ */
+DECLARE_METRIC_KEY(DEVICE_THROTTLE_STATUS, int);
+
+/**
 * @brief Metric to get an unsigned integer value of optimal number of executable network infer requests.
 */
 DECLARE_EXEC_NETWORK_METRIC_KEY(OPTIMAL_NUMBER_OF_INFER_REQUESTS, unsigned int);

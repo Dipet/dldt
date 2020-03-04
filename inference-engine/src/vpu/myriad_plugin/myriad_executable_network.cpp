@@ -59,7 +59,8 @@ ExecutableNetwork::ExecutableNetwork(
         METRIC_KEY(SUPPORTED_METRICS),
         METRIC_KEY(SUPPORTED_CONFIG_KEYS),
         METRIC_KEY(OPTIMAL_NUMBER_OF_INFER_REQUESTS),
-        METRIC_KEY(DEVICE_THERMAL)
+        METRIC_KEY(DEVICE_THERMAL),
+        METRIC_KEY(DEVICE_THROTTLE_STATUS),
     };
 }
 
@@ -173,6 +174,8 @@ void ExecutableNetwork::GetMetric(const std::string &name, Parameter &result, Re
         result = IE_SET_METRIC(OPTIMAL_NUMBER_OF_INFER_REQUESTS, static_cast<unsigned int>(2u * _actualNumExecutors));
     } else if (name == METRIC_KEY(DEVICE_THERMAL)) {
         result = IE_SET_METRIC(DEVICE_THERMAL, _executor->GetThermal(_device));
+    } else if(name == METRIC_KEY(DEVICE_THROTTLE_STATUS)) {
+        result = IE_SET_METRIC(DEVICE_THROTTLE_STATUS, _executor->getThrottleStatus(_device));
     } else {
         THROW_IE_EXCEPTION << NOT_IMPLEMENTED_str;
     }

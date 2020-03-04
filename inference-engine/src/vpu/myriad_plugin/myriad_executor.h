@@ -106,6 +106,7 @@ public:
     void printThrottlingStatus();
 
     float GetThermal(const DevicePtr device);
+    int getThrottleStatus(const DevicePtr device);
 
     template<typename T>
     std::vector<T> getGraphInfo(
