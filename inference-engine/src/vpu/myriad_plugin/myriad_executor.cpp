@@ -190,13 +190,12 @@ ncStatus_t MyriadExecutor::bootNextDevice(std::vector<DevicePtr> &devicePool,
         device._name = deviceName;
     }
 
-    status = ncDeviceSetOption(device._deviceHandle, NC_RW_DEVICE_POWER_CONFIG, reinterpret_cast<void*>(&powerConfig), sizeof(dataLength));
-
-    if (status != NC_OK) {
-        _log->warning("Failed to set configuration for Power Manager");
-        ncDeviceClose(&device._deviceHandle);
-        return status;
-    }
+//    status = ncDeviceSetOption(device._deviceHandle, NC_RW_DEVICE_POWER_CONFIG, reinterpret_cast<void*>(&powerConfig), sizeof(dataLength));
+//    if (status != NC_OK) {
+//        _log->warning("Failed to set configuration for Power Manager");
+//        ncDeviceClose(&device._deviceHandle);
+//        return status;
+//    }
 
     /* TODO: what should we do if we do not know maximum available graphs? What if we got number <= 0? */
     device._graphNum = 1;
