@@ -490,6 +490,21 @@ float MyriadExecutor::GetThermal(const DevicePtr device) {
     }
 }
 
+int MyriadExecutor::getThrottleStatus(const DevicePtr device) {
+    int throttle_status;
+    unsigned int data_length;
+    ncStatus_t status = ncDeviceGetOption(device->_deviceHandle,
+                                          NC_RO_DEVICE_THERMAL_THROTTLING_LEVEL,
+                                          reinterpret_cast<void *>(&throttle_status),
+                                          &data_length);
+
+    if (status != NC_OK) {
+        THROW_IE_EXCEPTION << "Failed to get thermal stats: " << ncStatusToStr(nullptr, status);
+    } else {
+        return throttle_status;
+    }
+}
+
 std::vector<float> MyriadExecutor::getPerfTimeInfo(ncGraphHandle_t *graphHandle) {
     return getGraphInfo<float>(graphHandle, NC_RO_GRAPH_TIME_TAKEN, _numStages + 2);
 }
