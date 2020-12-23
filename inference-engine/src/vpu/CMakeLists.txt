@@ -7,8 +7,8 @@
 #
 
 if (ENABLE_MYRIAD)
-    find_file(VPU_FIRMWARE_MA2450_FILE MvNCAPI-ma2450.mvcmd "${VPU_FIRMWARE_MA2450}/mvnc")
-    find_file(VPU_FIRMWARE_MA2X8X_FILE MvNCAPI-ma2x8x.mvcmd "${VPU_FIRMWARE_MA2X8X}/mvnc")
+    set(VPU_FIRMWARE_MA2450_FILE ${PROJECT_SOURCE_DIR}/temp/vpu/firmware/ma2450/mvnc/MvNCAPI-ma2450.mvcmd)
+    set(VPU_FIRMWARE_MA2X8X_FILE ${PROJECT_SOURCE_DIR}/temp/vpu/firmware/ma2x8x/mvnc/MvNCAPI-ma2x8x.mvcmd)
     
     if(NOT VPU_FIRMWARE_MA2450_FILE OR NOT VPU_FIRMWARE_MA2X8X_FILE)
         message(FATAL_ERROR "[VPU] Missing firmware")
